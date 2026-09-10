@@ -1,4 +1,4 @@
 # algorithm_2026
 
-[select](homeWork)
+[select](homeWork/20201673_09_10v2)
 [bubble](homeWork_bubble)
