@@ -1,11 +1,3 @@
-// 정렬 애니메이션
-// 정렬이 진행되는 동안 배열의 상태를 단계마다 통째로 복사해 ArrayList에 모아 두고,
-// 그 순서대로 다시 그려서 애니메이션처럼 보여 준다.
-//
-// 조작: SPACE 자동재생 켜기/끄기, a 빠르게, s 느리게, r 새 배열로 다시 시작
-//       <- -> 또는 마우스 왼쪽/오른쪽 클릭: 한 단계씩 이동
-//       1 bubble sort, 2 selection sort, 3 insertion sort
-
 ArrayList<SortArray> lists;
 SortArray list, plist;
 
@@ -123,7 +115,6 @@ void run() {
   list.printArray();
 }
 
-// 직전 단계의 배열을 복사해 새 단계를 만든다. i0, j0은 화면에 표시할 회차/위치.
 SortArray newStep(int i0, int j0) {
   plist = lists.get(loop);
   return new SortArray(len, plist.arr, i0, j0);
@@ -134,7 +125,6 @@ void addStep(SortArray s) {
   loop++;
 }
 
-// 버블 정렬: 이웃한 두 값을 비교해 왼쪽이 크면 교환. 한 회차가 끝나면 가장 큰 값이 오른쪽 끝에 확정.
 void bubbleSort() {
   for (int j = 0; j < len - 1; j++) {
     for (int i = 0; i < len - j - 1; i++) {
@@ -147,7 +137,6 @@ void bubbleSort() {
   }
 }
 
-// 선택 정렬: 아직 정렬되지 않은 구간에서 최댓값을 찾아 구간의 맨 뒤와 교환.
 void selectionSort() {
   for (int j = 0; j < len - 1; j++) {
     int last = len - 1 - j;
@@ -165,7 +154,6 @@ void selectionSort() {
   }
 }
 
-// 삽입 정렬: 왼쪽의 정렬된 묶음에 새 값을 끼워 넣는다. 여기서는 이웃 교환으로 한 칸씩 밀어 넣어 단계를 보여 준다.
 void insertionSort() {
   for (int i = 1; i < len; i++) {
     int j = i;
@@ -190,7 +178,6 @@ class SortArray {
   int i0, j0, len, max, w;
   int[] arr;
 
-  // 무작위 배열로 새로 만들기
   SortArray(int len, int i0, int j0) {
     max = 100;
     this.i0 = i0;
@@ -203,7 +190,6 @@ class SortArray {
     shuffle();
   }
 
-  // 기존 배열을 복사해서 만들기 (단계 저장용)
   SortArray(int len, int[] arr, int i0, int j0) {
     this.i0 = i0;
     this.j0 = j0;

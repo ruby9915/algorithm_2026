@@ -1,20 +1,11 @@
-// Binary Search Tree
-// insert / delete / search 와 inorder / preorder / postorder 순회
-//
-// 조작: i 삽입 모드, d 삭제 모드, s 검색 모드
-//       삽입 모드: 화면을 클릭하면 마우스 x 위치(0~99)에 해당하는 값을 삽입
-//       삭제/검색 모드: 노드를 클릭
-//       1 inorder, 2 preorder, 3 postorder (결과는 화면 아래와 콘솔에 출력)
-//       c 트리 비우기, b 새 트리 만들기, v 또는 SPACE 현재 순회 결과 다시 출력
-
-int n = 8;          // 새 트리를 만들 때 넣는 노드 수
+int n = 8;
 int xstep = 400;
 int ystep = 65;
 int radius = 34;
 
-int mode = 0;       // 0: insert, 1: delete, 2: search
-int traversal = 0;  // 0: inorder, 1: preorder, 2: postorder
-int highlight = -1; // 마지막으로 찾거나 넣은 값 (화면에서 색을 바꿔 표시)
+int mode = 0;
+int traversal = 0;
+int highlight = -1;
 
 PFont font;
 BTree tree = new BTree();
@@ -48,7 +39,7 @@ void mousePressed() {
 
   int value = (int)(100.0 * mouseX / width);
 
-  if (mode == 0) {                       // INSERT
+  if (mode == 0) {
     if (tree.insert(value)) {
       message = "Inserted: " + value;
       highlight = value;
@@ -56,7 +47,7 @@ void mousePressed() {
       message = "Already exists: " + value;
     }
     tree.printTree();
-  } else if (mode == 1) {                // DELETE
+  } else if (mode == 1) {
     tree.findNode();
     if (tree.value != -1) {
       int target = tree.value;
@@ -67,7 +58,7 @@ void mousePressed() {
     } else {
       message = "Click a node to delete";
     }
-  } else {                               // SEARCH
+  } else {
     tree.findNode();
     if (tree.value != -1) value = tree.value;
     if (tree.contains(value)) {
@@ -155,7 +146,6 @@ class BTree {
     return root == null;
   }
 
-  // ---------- SEARCH : 작으면 왼쪽, 크면 오른쪽, 같으면 찾음
   boolean contains(int in) {
     return contains(in, root);
   }
@@ -167,9 +157,8 @@ class BTree {
     else return true;
   }
 
-  // ---------- INSERT : 검색이 실패한 자리(비어 있는 자식 자리)에 새 노드를 붙인다
   boolean insert(int in) {
-    if (contains(in)) return false;   // 키는 중복되지 않는다
+    if (contains(in)) return false;
     root = insert(in, root);
     return true;
   }
@@ -181,7 +170,6 @@ class BTree {
     return curr;
   }
 
-  // ---------- DELETE : 자식 수에 따라 세 경우
   void remove(int in) {
     root = remove(in, root);
   }
@@ -194,12 +182,9 @@ class BTree {
     } else if (in > curr.val) {
       curr.right = remove(in, curr.right);
     } else {
-      // Case 1: 자식이 없음 -> 그냥 뗀다
       if (curr.left == null && curr.right == null) return null;
-      // Case 2: 자식이 하나 -> 그 자식을 이 자리에 올린다
       if (curr.left == null) return curr.right;
       if (curr.right == null) return curr.left;
-      // Case 3: 자식이 둘 -> 오른쪽 서브트리의 최솟값(후계자)을 이 자리에 복사하고, 그 노드를 지운다
       Node succ = findMin(curr.right);
       curr.val = succ.val;
       curr.right = remove(succ.val, curr.right);
@@ -224,7 +209,6 @@ class BTree {
     return 1 + max(treeHeight(curr.left), treeHeight(curr.right));
   }
 
-  // ---------- 노드 위치 계산 : 깊이가 깊어질수록 좌우 간격을 절반으로
   void assignPosition() {
     if (!isEmpty()) assignPosition(root, 0, 0);
   }
@@ -237,7 +221,6 @@ class BTree {
     assignPosition(curr.right, dx + 1.0 / pow(2.0, dy + 1), dy + 1);
   }
 
-  // ---------- TRAVERSAL
   void printTree() {
     index = 0;
     traversalResult = "";
@@ -259,15 +242,15 @@ class BTree {
   void printTree(Node curr) {
     if (curr == null) return;
 
-    if (traversal == 0) {          // INORDER : 왼쪽 -> 자신 -> 오른쪽 (BST에서는 오름차순)
+    if (traversal == 0) {
       printTree(curr.left);
       visit(curr);
       printTree(curr.right);
-    } else if (traversal == 1) {   // PREORDER : 자신 -> 왼쪽 -> 오른쪽
+    } else if (traversal == 1) {
       visit(curr);
       printTree(curr.left);
       printTree(curr.right);
-    } else {                       // POSTORDER : 왼쪽 -> 오른쪽 -> 자신
+    } else {
       printTree(curr.left);
       printTree(curr.right);
       visit(curr);
@@ -279,7 +262,6 @@ class BTree {
     index++;
   }
 
-  // ---------- 마우스로 노드 고르기
   void findNode() {
     x = y = value = -1;
     if (!isEmpty()) findNode(root);
@@ -305,7 +287,6 @@ class BTree {
     findNode(curr.right);
   }
 
-  // ---------- 그리기
   void drawTree() {
     if (!isEmpty()) {
       drawTreeLine(root);
