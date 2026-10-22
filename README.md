@@ -26,48 +26,22 @@
 
 [heap](homework/heap/heap.pde)
 ---
-최대 힙을 만든 뒤 뿌리(최댓값)를 맨 뒤와 맞바꾸고 힙 크기를 하나 줄여 가며 정렬합니다. `|` 오른쪽이 확정된 부분입니다.
+<img width="691" height="888" alt="image" src="https://github.com/user-attachments/assets/76d0b8c8-02c6-4ded-9901-c1b7a0c1b42d" />
 
-```
-초기      : 29  10  14  37  13  24  11  33
-힙 완성   : 37  33  24  29  13  14  11  10
-회차 01   : 33  29  24  10  13  14  11  | 37
-회차 02   : 29  13  24  10  11  14  | 33  37
-회차 03   : 24  13  14  10  11  | 29  33  37
-회차 04   : 14  13  11  10  | 24  29  33  37
-회차 05   : 13  10  11  | 14  24  29  33  37
-회차 06   : 11  10  | 13  14  24  29  33  37
-회차 07   : 10  | 11  13  14  24  29  33  37
-완료      : 10  11  13  14  24  29  33  37
-```
-
-(실행 캡처 추가 예정)
 
 ## 과제 2 — 정렬 애니메이션
 
 [animation](homework/animation/animation.pde)
 ---
-정렬 중 배열의 상태를 단계마다 `ArrayList`에 복사해 두고 순서대로 다시 그립니다.
+<img width="1647" height="929" alt="image" src="https://github.com/user-attachments/assets/0c75c6fe-52cc-4c6d-a59b-cd23fcaab807" />
 
-- `SPACE` 자동 재생 켜기/끄기, `a` 빠르게, `s` 느리게, `r` 새 배열로 다시 시작
-- `←` `→` 또는 마우스 왼쪽/오른쪽 클릭으로 한 단계씩 이동
-- `1` bubble sort, `2` selection sort, `3` insertion sort
-
-(실행 캡처 추가 예정)
 
 ## 과제 3 — Binary Search Tree
 
 [bst](homework/bst/bst.pde)
 ---
-insert / delete / search 와 inorder / preorder / postorder 순회.
+<img width="1830" height="898" alt="image" src="https://github.com/user-attachments/assets/be762198-87f8-4627-aa0d-221cb1052a23" />
 
-- `i` 삽입 모드: 화면을 클릭하면 마우스 x 위치(0~99)에 해당하는 값을 삽입
-- `d` 삭제 모드, `s` 검색 모드: 노드를 클릭
-- `1` inorder, `2` preorder, `3` postorder (결과는 화면 아래와 콘솔에 출력)
-- `c` 트리 비우기, `b` 새 트리 만들기, `v` 현재 순회 결과 다시 출력
-- 삭제는 자식 수에 따라 세 경우로 처리합니다. 자식이 둘이면 오른쪽 서브트리의 최솟값을 올립니다.
-
-(실행 캡처 추가 예정)
 
 ## 그 밖의 파일
 
