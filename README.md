@@ -43,6 +43,32 @@
 <img width="1830" height="898" alt="image" src="https://github.com/user-attachments/assets/be762198-87f8-4627-aa0d-221cb1052a23" />
 
 
+## 과제 4 — 스택을 이용한 중위→후위 표기 변환 계산기
+
+[calculator](homework/calculator/calculator.pde)
+---
+<img width="720" alt="infix to postfix calculator" src="homework/calculator/calculator.png" />
+
+## 과제 5 — 조약돌 놓기 문제 (동적 계획법)
+
+[pebble](homework/pebble/pebble.pde)
+---
+<img width="720" alt="pebble placement" src="homework/pebble/pebble.png" />
+
+## 과제 6 — 그래프의 BFS와 DFS
+
+[bfs_dfs](homework/bfs_dfs/bfs_dfs.pde)
+---
+<img width="720" alt="bfs" src="homework/bfs_dfs/bfs.png" />
+<img width="720" alt="dfs" src="homework/bfs_dfs/dfs.png" />
+
+## 과제 7 — 최소 신장 트리 (Kruskal's Algorithm)
+
+[kruskal](homework/kruskal/kruskal.pde)
+---
+<img width="720" alt="kruskal" src="homework/kruskal/kruskal.png" />
+
+
 ## 그 밖의 파일
 
 - [sketch_20201673_2026_09_03.pde](sketch_20201673_2026_09_03.pde): 9/3 실습 (선택 정렬 시간 측정)
